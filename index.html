@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>foryou</title>
+    <title>foryoufsg</title>
     <style>
         * {
             margin: 0;
@@ -17,7 +17,7 @@
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            background-attachment: fixed; /* 让背景随滚动有视差感 */
+            background-attachment: fixed;
         }
 
         .container {
@@ -95,7 +95,6 @@
             margin-bottom: 20px;
         }
 
-        /* 👇 新增：统一按钮样式 */
         .feature-button {
             display: inline-block;
             background: linear-gradient(45deg, #667eea, #764ba2);
@@ -112,30 +111,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.2);
             background: linear-gradient(45deg, #5a6fd8, #6a3f9c);
-        }
-
-        .cta-section {
-            text-align: center;
-            padding: 60px 0;
-            color: white;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
         }
 
         footer {
@@ -181,72 +156,68 @@
 <body>
     <div class="container">
         <header>
-            <h1>ForYou</h1>
-            <p class="subtitle">欢迎来到{李蜉蝣}的个人主页</p>
+            <h1>foryoufsg</h1>
+            <p class="subtitle">蜉蝣的数字花园</p>
         </header>
 
         <div class="main-content">
-            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">全部栏目</h2>
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">项目作品</h2>
             
             <div class="features">
-                <!-- 应急连接 -->
+                <!-- FSG语言 -->
                 <div class="feature-card">
-                    <span class="feature-icon">🚀</span>
-                    <h3 class="feature-title">应急连接</h3>
-                    <p class="feature-description">
-                        <strong>功能说明：</strong>在网络不稳定或主连接中断时，自动启用备用链路，确保服务持续可用。<br>
-                        <strong>核心价值：</strong>通过多路径冗余机制，显著提升通信可靠性，降低业务中断风险。<br>
-                        <strong>适用场景：</strong>远程办公、在线会议、金融交易、医疗远程操作等对网络稳定性要求极高的场景。<br>
-                        <strong>百度服务示例：</strong>在使用百度搜索、百度网盘、百度地图时，即使主网络出现波动，系统也会无缝切换至备用通道。
+                    <span class="feature-icon">⚡</span>
+                    <h3 class="feature-title">FSG语言</h3>
+                    <p class="description">
+                        <strong>简介：</strong>基于形式文法和逻辑学的编程语言，核心为"索引、计算、编码"三原语<br>
+                        <strong>特性：</strong>纯Python实现、无外部依赖、支持手机环境运行<br>
+                        <strong>状态：</strong>解释器v1已发布，持续开发中
                     </p>
-                    <a href="https://www.baidu.com" class="feature-button" target="_blank">前往百度</a>
+                    <a href="https://github.com/hctj353056/FSG-language" class="feature-button" target="_blank">查看项目</a>
                 </div>
 
-                <!-- 程序 -->
+                <!-- 神经元网络 -->
                 <div class="feature-card">
-                    <span class="feature-icon">📱</span>
-                    <h3 class="feature-title">程序</h3>
-                    <p class="feature-description">尚未开发</p>
-                    <a href="#" class="feature-button" onclick="alert('敬请期待！')">敬请期待</a>
+                    <span class="feature-icon">🧠</span>
+                    <h3 class="feature-title">神经元网络</h3>
+                    <p class="description">
+                        <strong>简介：</strong>纯Python实现的创新神经元网络模型，适合红米K70运行<br>
+                        <strong>特性：</strong>三维空间分布、邻域干涉、动态阈值、结构演化<br>
+                        <strong>状态：</strong>已完成v1、v2、v3（对话系统）
+                    </p>
+                    <a href="https://github.com/hctj353056/ling" class="feature-button" target="_blank">查看项目</a>
                 </div>
-                
-                <!-- 艺术 -->
+
+                <!-- 其他 -->
                 <div class="feature-card">
-                    <span class="feature-icon">🎨</span>
-                    <h3 class="feature-title">艺术</h3>
-                    <p class="feature-description">尚不存在</p>
-                    <a href="#" class="feature-button" onclick="alert('未来可期！')">未来可期</a>
+                    <span class="feature-icon">🔗</span>
+                    <h3 class="feature-title">更多作品</h3>
+                    <p class="description">
+                        <strong>简介：</strong>我的GitHub仓库集合<br>
+                        <strong>包含：</strong>个人项目、实验代码、学习笔记<br>
+                        <strong>状态：</strong>持续更新中
+                    </p>
+                    <a href="https://github.com/hctj353056?tab=repositories" class="feature-button" target="_blank">浏览仓库</a>
                 </div>
             </div>
 
             <div style="margin-top: 40px; padding: 30px; background: #e3f2fd; border-radius: 15px;">
-                <h3 style="color: #1976d2; margin-bottom: 15px;">关于这个网站</h3>
+                <h3 style="color: #1976d2; margin-bottom: 15px;">关于</h3>
                 <p style="color: #555; line-height: 1.8;">
-                    这是一个使用纯HTML、CSS和JavaScript构建的静态网站示例。它展示了现代网页设计的各种技术，
-                    包括CSS Grid布局、Flexbox、动画效果、响应式设计等。网站托管在GitHub Pages上，
-                    可以通过公网直接访问。
+                    这里是蜉蝣（hctj353056）的数字花园，存放我的开源项目和个人作品。
+                    网站托管在GitHub Pages上，通过域名 foryoufsg.com 访问。
                 </p>
             </div>
         </div>
 
-        <div class="cta-section">
-            <h2 style="margin-bottom: 20px;">前往新世界</h2>
-            <p style="margin-bottom: 30px; font-size: 1.1rem;">探索更多功能和内容</p>
-            <a href="#" class="cta-button" onclick="showAlert()">出发</a>
-        </div>
-
         <footer>
-            <p>&copy; 2025 我的静态网站. 使用GitHub Pages托管.</p>
+            <p>&copy; 2026 foryoufsg. 由AI辅助构建.</p>
         </footer>
     </div>
 
     <script>
-        function showAlert() {
-            alert('尚未实现哦！');
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            // 滚动视差效果（优化性能）
+            // 滚动视差效果
             let ticking = false;
             window.addEventListener('scroll', () => {
                 if (!ticking) {

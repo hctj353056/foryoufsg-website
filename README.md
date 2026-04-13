@@ -1,34 +1,42 @@
-# 我个人实践网站
+# foryoufsg
 
-由AI辅助构建，使用时将存在不可预知的风险，与本人及本项目无关。
-这是一个现代化的静态网站项目，使用纯HTML、CSS和JavaScript构建。
+蜉蝣的数字花园 - 个人作品集网站
 
-## 特色功能
+## 在线访问
 
-- 🚀 **快速加载** - 静态网站技术确保快速响应
-- 📱 **响应式设计** - 完美适配各种设备
-- 🎨 **现代设计** - 渐变背景、动画效果、精美视觉
+- GitHub Pages: https://hctj353056.github.io/my-static-website/
+- 域名: https://foryoufsg.com (待配置DNS)
+
+## 项目作品
+
+### ⚡ FSG语言
+基于形式文法和逻辑学的编程语言，核心为"索引、计算、编码"三原语
+
+- GitHub: https://github.com/hctj353056/FSG-language
+- 特性: 纯Python实现、无外部依赖、支持手机环境运行
+- 状态: 解释器v1已发布
+
+### 🧠 神经元网络
+纯Python实现的创新神经元网络模型，适合红米K70运行
+
+- GitHub: https://github.com/hctj353056/ling
+- 特性: 三维空间分布、邻域干涉、动态阈值、结构演化
+- 状态: 已完成v1、v2、v3（对话系统）
 
 ## 技术栈
 
 - HTML5
-- CSS3 (包含Grid、Flexbox、动画)
+- CSS3 (Grid, Flexbox, 动画)
 - JavaScript (ES6+)
 - GitHub Pages 托管
 
-## 在线访问
-
-网站已部署到GitHub Pages，可通过以下链接访问：
-[https://hctj353056.github.io/my-static-website/](https://hctj353056.github.io/my-static-website/)
-
 ## 本地开发
 
-1. 克隆仓库
 ```bash
 git clone https://github.com/hctj353056/my-static-website.git
+cd my-static-website
+# 在浏览器中打开 index.html
 ```
-
-2. 在浏览器中打开 `index.html` 文件即可预览
 
 ## 部署
 
@@ -37,3 +45,7 @@ git clone https://github.com/hctj353056/my-static-website.git
 ## 许可证
 
 MIT License
+
+---
+
+蜉蝣子 ♡
