@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全文检索 - 蜉熰阁</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", serif; background: #f5f5f5; }
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #e8d5b7; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+        header a { color: #e8d5b7; text-decoration: none; padding: 8px 20px; border: 1px solid #e8d5b7; border-radius: 20px; }
+        header a:hover { background: rgba(232,213,183,0.1); }
+        .search-section { background: white; padding: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .search-box { max-width: 700px; margin: 0 auto; display: flex; gap: 10px; }
+        .search-box input { flex: 1; padding: 15px 20px; border: 2px solid #e0e0e0; border-radius: 10px; font-size: 1em; }
+        .search-box input:focus { outline: none; border-color: #c9a96e; }
+        .search-box button { padding: 15px 30px; background: linear-gradient(135deg, #c9a96e 0%, #b8956a 100%); color: #1a1a2e; border: none; border-radius: 10px; cursor: pointer; }
+        .container { max-width: 900px; margin: 0 auto; padding: 30px; }
+        .results-count { color: #666; margin-bottom: 20px; }
+        .result-item { background: white; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .result-item h3 a { color: #1a1a2e; text-decoration: none; }
+        .result-item h3 a:hover { color: #c9a96e; }
+        .result-meta { display: flex; gap: 15px; margin: 10px 0; font-size: 0.85em; color: #888; }
+        .result-snippet { color: #555; line-height: 1.7; }
+        .result-snippet mark { background: #fff3cd; color: #856404; padding: 0 2px; border-radius: 3px; }
+        .no-results, .initial-hint { text-align: center; padding: 60px; color: #888; }
+        .no-results .icon, .initial-hint .icon { font-size: 4em; margin-bottom: 20px; }
+        @media (max-width: 600px) { .search-box { flex-direction: column; } header { flex-direction: column; gap: 15px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔍 全文检索</h1>
+        <a href="../../index.html">返回首页</a>
+    </header>
+    
+    <div class="search-section">
+        <form class="search-box" id="searchForm">
+            <input type="text" id="searchInput" placeholder="输入关键词搜索..." autocomplete="off">
+            <button type="submit">搜索</button>
+        </form>
+    </div>
+    
+    <div class="container" id="resultsContainer">
+        <div class="initial-hint"><div class="icon">🔎</div><p>输入关键词开始搜索</p></div>
+    </div>
+    
+    <script src="search-data.js"></script>
+    <script>
+        function performSearch(query) {
+            if (!query || !query.trim()) return [];
+            const q = query.toLowerCase().trim();
+            return SEARCH_DATA.filter(item => 
+                item.title.toLowerCase().includes(q) || 
+                item.content.toLowerCase().includes(q) ||
+                (item.tags && item.tags.some(t => t.toLowerCase().includes(q)))
+            ).map(item => ({...item, snippet: generateSnippet(item.content, q)}));
+        }
+        function generateSnippet(content, query) {
+            if (!content) return '';
+            const index = content.toLowerCase().indexOf(query);
+            if (index === -1) return content.substring(0, 120) + '...';
+            const start = Math.max(0, index - 40), end = Math.min(content.length, index + query.length + 80);
+            return (start > 0 ? '...' : '') + content.substring(start, end) + (end < content.length ? '...' : '');
+        }
+        function highlight(text, query) {
+            if (!query) return text;
+            return text.replace(new RegExp('(' + query + ')', 'gi'), '<mark>$1</mark>');
+        }
+        function renderResults(results, query) {
+            const container = document.getElementById('resultsContainer');
+            if (!query) { container.innerHTML = '<div class="initial-hint"><div class="icon">🔎</div><p>输入关键词开始搜索</p></div>'; return; }
+            if (results.length === 0) { container.innerHTML = '<div class="no-results"><div class="icon">😔</div><p>未找到与"' + query + '"相关的内容</p></div>'; return; }
+            const typeLabel = {poem: '古诗', article: '文章', entry: '词条'}, icon = {poem: '✍️', article: '📝', entry: '📖'};
+            let html = `<p class="results-count">找到 ${results.length} 个相关结果</p>`;
+            results.forEach(r => { html += `<div class="result-item"><h3><a href="${r.url}">${icon[r.type] || '📖'} ${highlight(r.title, query)}</a></h3><div class="result-meta"><span>📁 ${typeLabel[r.type] || '词条'}</span></div><p class="result-snippet">${highlight(r.snippet, query)}</p></div>`; });
+            container.innerHTML = html;
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('searchForm'), input = document.getElementById('searchInput');
+            const urlParams = new URLSearchParams(window.location.search), queryParam = urlParams.get('q');
+            if (queryParam) { input.value = queryParam; renderResults(performSearch(queryParam), queryParam); }
+            form.addEventListener('submit', function(e) { e.preventDefault(); renderResults(performSearch(input.value), input.value); });
+        });
+    </script>
+</body>
+</html>

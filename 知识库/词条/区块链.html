@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>区块链技术 - 蜉熰阁</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", serif; background: #f5f5f5; }
+        header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #e8d5b7; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; }
+        header a { color: #e8d5b7; text-decoration: none; padding: 8px 20px; border: 1px solid #e8d5b7; border-radius: 20px; }
+        header a:hover { background: rgba(232,213,183,0.1); }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        .entry-header { background: white; border-radius: 15px 15px 0 0; padding: 40px; border-bottom: 1px solid #eee; }
+        .entry-title { font-size: 2em; color: #1a1a2e; margin-bottom: 15px; }
+        .entry-content { background: white; border-radius: 0 0 15px 15px; padding: 40px; line-height: 2; color: #333; }
+        .entry-content h2 { color: #1a1a2e; margin: 25px 0 15px; font-size: 1.3em; }
+        .entry-content p { margin-bottom: 15px; }
+        .entry-tags { margin-top: 30px; display: flex; gap: 10px; }
+        .tag { background: #f0f0f0; color: #666; padding: 5px 15px; border-radius: 15px; font-size: 0.9em; }
+        @media (max-width: 600px) { header { flex-direction: column; gap: 15px; } }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📖 知识词条</h1>
+        <a href="index.html">← 返回词条列表</a>
+    </header>
+    <div class="container">
+        <div class="entry-header"><h1 class="entry-title">区块链技术</h1></div>
+        <div class="entry-content">
+            <p><strong>区块链（Blockchain）</strong>是一种分布式账本技术，通过密码学方法将数据打包成区块，并按时间顺序相连形成链式结构。</p>
+            
+            <h2>核心特点</h2>
+            <p><strong>去中心化：</strong>区块链不依赖中心化的服务器或机构，所有节点共同维护数据，消除了单点故障的风险。</p>
+            <p><strong>不可篡改：</strong>一旦数据被写入区块链，几乎无法被修改或删除。每个区块都包含前一个区块的哈希值，形成完整的信任链。</p>
+            <p><strong>可追溯：</strong>区块链上的每一笔交易都可以追溯到源头，提供了透明可查的记录。</p>
+            
+            <h2>工作原理</h2>
+            <p>区块链由一个个按时间顺序相连的数据块组成。当有新交易发生时，会被广播到网络中的所有节点。矿工或验证者将交易打包成新区块，并通过共识机制达成一致。新区块被添加到链上后，所有节点都会更新自己的账本副本。</p>
+            
+            <h2>应用领域</h2>
+            <p>区块链技术最初作为比特币的底层技术被提出，如今已广泛应用于金融（跨境支付、供应链金融）、公共服务（数字身份、投票系统）、版权保护、溯源追踪等多个领域。</p>
+            
+            <div class="entry-tags">
+                <span class="tag">技术</span><span class="tag">区块链</span><span class="tag">比特币</span><span class="tag">去中心化</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
