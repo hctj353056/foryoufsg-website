@@ -1,0 +1,36 @@
+const SEARCH_DATA = [
+  // poetry
+  { type: "poem", title: "孤", content: "孤影独坐月光寒，心似浮萍水间流。", url: "../original-works/poetry/index.html", tags: ["poetry", "孤寂"] },
+  { type: "poem", title: "雨语", content: "雨声轻敲窗纱，如诉说千年的故事。", url: "../original-works/poetry/index.html", tags: ["poetry", "雨"] },
+  { type: "poem", title: "无题", content: "夜深人静思往事，灯火阑珊待故人。", url: "../original-works/poetry/index.html", tags: ["poetry", "夜"] },
+  { type: "poem", title: "雪", content: "漫天飞雪覆庭深，独倚寒窗听落梅。", url: "../original-works/poetry/index.html", tags: ["poetry", "雪"] },
+  { type: "poem", title: "纱", content: "轻纱薄雾隐幽径，翠竹深处有人家。", url: "../original-works/poetry/index.html", tags: ["poetry", "纱"] },
+  { type: "poem", title: "赏夜月", content: "夜月如盘挂碧空，清辉万里照山河。", url: "../original-works/poetry/index.html", tags: ["poetry", "月"] },
+  { type: "poem", title: "浴", content: "沐浴清风洗尘垢，心怀坦荡对苍穹。", url: "../original-works/poetry/index.html", tags: ["poetry", "净化"] },
+  { type: "poem", title: "初春", content: "春风拂柳绿丝绦，细雨润花红映天。", url: "../original-works/poetry/index.html", tags: ["poetry", "春"] },
+  { type: "poem", title: "无题·听曲", content: "琴音袅袅绕梁间，如泣如诉动心弦。", url: "../original-works/poetry/index.html", tags: ["poetry", "音乐"] },
+  { type: "poem", title: "游玉泉小记", content: "玉泉潺潺绕山涧，清风拂面心自闲。", url: "../original-works/poetry/index.html", tags: ["poetry", "游记"] },
+  { type: "poem", title: "孤·其二", content: "孤舟独泊烟江冷，望断天涯路几千。", url: "../original-works/poetry/index.html", tags: ["poetry", "孤寂"] },
+  { type: "poem", title: "读咏柳有感", content: "碧玉妆成一树高，万条垂下绿丝绦。", url: "../original-works/poetry/index.html", tags: ["poetry", "柳"] },
+  { type: "poem", title: "雨予语", content: "雨滴轻敲心弦，如低语诉说着往事。", url: "../original-works/poetry/index.html", tags: ["poetry", "雨"] },
+  { type: "poem", title: "月影", content: "月影斑驳照庭深，轻风拂面思故人。", url: "../original-works/poetry/index.html", tags: ["poetry", "月"] },
+  { type: "poem", title: "日华", content: "阳光洒满庭前暖，花香鸟语闹春天。", url: "../original-works/poetry/index.html", tags: ["poetry", "阳"] },
+  { type: "poem", title: "予晨曦", content: "晨光熹微破云开，新的一天又到来。", url: "../original-works/poetry/index.html", tags: ["poetry", "晨"] },
+  { type: "poem", title: "前路", content: "前路漫漫何所惧，心怀梦想向远方。", url: "../original-works/poetry/index.html", tags: ["poetry", "励志"] },
+  { type: "poem", title: "夜月", content: "夜月高悬照四方，清辉如水洒窗前。", url: "../original-works/poetry/index.html", tags: ["poetry", "月"] },
+  { type: "poem", title: "学", content: "学海无涯苦作舟，书山有路勤为径。", url: "../original-works/poetry/index.html", tags: ["poetry", "学习"] },
+  { type: "poem", title: "散诗·寄月", content: "明月千里寄相思，天涯何处不相逢。", url: "../original-works/poetry/index.html", tags: ["poetry", "月"] },
+  { type: "poem", title: "爱情花园", content: "花园盛开爱情花，芬芳馥郁满天涯。", url: "../original-works/poetry/index.html", tags: ["poetry", "爱情"] },
+  { type: "poem", title: "散诗·思日暖", content: "冬日暖阳照人心，驱散寒意暖如春。", url: "../original-works/poetry/index.html", tags: ["poetry", "冬"] },
+  { type: "poem", title: "蜉蝣释", content: "蜉蝣一日尽朝暮，人生百年亦如斯。", url: "../original-works/poetry/index.html", tags: ["poetry", "人生"] },
+  { type: "poem", title: "已巳春雪·其一", content: "春雪纷飞覆青山，银装素裹如画卷。", url: "../original-works/poetry/index.html", tags: ["poetry", "雪"] },
+  { type: "poem", title: "已巳春雪·其二", content: "雪化春泥更护花，来年芳菲满天涯。", url: "../original-works/poetry/index.html", tags: ["poetry", "雪"] },
+
+  // articles
+  { type: "article", title: "夕", content: "夕阳西下，晚霞如画，暮色温柔如歌。", url: "../original-works/articles/index.html", tags: ["散文", "夕阳"] },
+  { type: "article", title: "霞", content: "朝霞映红了半边天，新的一天充满希望。", url: "../original-works/articles/index.html", tags: ["散文", "朝霞"] },
+  { type: "article", title: "恍恍（一）", content: "时光如流水，恍惚间已过千帆。", url: "../original-works/articles/index.html", tags: ["散文", "时光"] },
+  { type: "article", title: "池隙掠月（二）", content: "月影倒映池塘中，微风轻拂碎银光。", url: "../original-works/articles/index.html", tags: ["散文", "月"] },
+  { type: "article", title: "惘", content: "心中迷茫如雾，不知前路在何方。", url: "../original-works/articles/index.html", tags: ["散文", "迷茫"] },
+  { type: "article", title: "致童真", content: "童真如明珠，纯真无暇照人心。", url: "../original-works/articles/index.html", tags: ["散文", "童真"] }
+];
