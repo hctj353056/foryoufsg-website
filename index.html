@@ -3,233 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>foryoufsg</title>
+    <title>蜉熵阁</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Noto Serif SC', 'Songti SC', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
-            background-attachment: fixed;
+            color: #e8e6e3;
+            padding: 0;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 60px 0;
-            color: white;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease-out 0.3s both;
-        }
-
-        .main-content {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
             position: relative;
         }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-            border-color: #667eea;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.1) 0%, transparent 70%);
         }
-
-        .feature-icon {
-            font-size: 3rem;
+        h1 {
+            font-size: 4.5em;
+            color: #ffd700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
             margin-bottom: 20px;
-            display: block;
+            letter-spacing: 0.2em;
+            position: relative;
+            z-index: 1;
         }
-
-        .feature-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #333;
+        .subtitle {
+            font-size: 1.8em;
+            color: #e8e6e3;
+            letter-spacing: 0.3em;
+            opacity: 0.9;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
         }
-
-        .feature-description {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
+        .nav-container {
+            position: absolute;
+            bottom: 60px;
+            z-index: 1;
         }
-
-        .feature-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 10px 24px;
+        .nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-item {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,215,0,0.3);
+            padding: 15px 30px;
+            border-radius: 8px;
+            color: #e8e6e3;
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            font-size: 1.1em;
         }
-
-        .feature-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-            background: linear-gradient(45deg, #5a6fd8, #6a3f9c);
+        .nav-item:hover {
+            background: rgba(255,215,0,0.15);
+            border-color: #ffd700;
+            color: #ffd700;
+            transform: translateY(-3px);
         }
-
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: white;
-            opacity: 0.8;
+        .nav-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
         }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .main-content {
-                padding: 20px;
-                margin: 20px 0;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .feature-button {
-                width: 100%;
-                padding: 12px;
-            }
+        @media (max-width: 600px) {
+            h1 { font-size: 3em; }
+            .nav { flex-direction: column; gap: 10px; }
+            .nav-item { width: 100%; padding: 12px 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>foryoufsg</h1>
-            <p class="subtitle">蜉蝣的数字花园</p>
-        </header>
-
-        <div class="main-content">
-            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">项目作品</h2>
-            
-            <div class="features">
-                <!-- FSG语言 -->
-                <div class="feature-card">
-                    <span class="feature-icon">⚡</span>
-                    <h3 class="feature-title">FSG语言</h3>
-                    <p class="description">
-                        <strong>简介：</strong>基于形式文法和逻辑学的编程语言，核心为"索引、计算、编码"三原语<br>
-                        <strong>特性：</strong>纯Python实现、无外部依赖、支持手机环境运行<br>
-                        <strong>状态：</strong>解释器v1已发布，持续开发中
-                    </p>
-                    <a href="https://github.com/hctj353056/FSG-language" class="feature-button" target="_blank">查看项目</a>
-                </div>
-
-                <!-- 神经元网络 -->
-                <div class="feature-card">
-                    <span class="feature-icon">🧠</span>
-                    <h3 class="feature-title">神经元网络</h3>
-                    <p class="description">
-                        <strong>简介：</strong>纯Python实现的创新神经元网络模型，适合红米K70运行<br>
-                        <strong>特性：</strong>三维空间分布、邻域干涉、动态阈值、结构演化<br>
-                        <strong>状态：</strong>已完成v1、v2、v3（对话系统）
-                    </p>
-                    <a href="https://github.com/hctj353056/ling" class="feature-button" target="_blank">查看项目</a>
-                </div>
-
-                <!-- 其他 -->
-                <div class="feature-card">
-                    <span class="feature-icon">🔗</span>
-                    <h3 class="feature-title">更多作品</h3>
-                    <p class="description">
-                        <strong>简介：</strong>我的GitHub仓库集合<br>
-                        <strong>包含：</strong>个人项目、实验代码、学习笔记<br>
-                        <strong>状态：</strong>持续更新中
-                    </p>
-                    <a href="https://github.com/hctj353056?tab=repositories" class="feature-button" target="_blank">浏览仓库</a>
-                </div>
-            </div>
-
-            <div style="margin-top: 40px; padding: 30px; background: #e3f2fd; border-radius: 15px;">
-                <h3 style="color: #1976d2; margin-bottom: 15px;">关于</h3>
-                <p style="color: #555; line-height: 1.8;">
-                    这里是蜉蝣（hctj353056）的数字花园，存放我的开源项目和个人作品。
-                    网站托管在GitHub Pages上，后期可以通过域名 foryoufsg.com 访问。
-                </p>
+    <div class="hero">
+        <h1>蜉熵阁</h1>
+        <p class="subtitle">原创 · 古诗 · 散文 · 检索</p>
+        
+        <div class="nav-container">
+            <div class="nav">
+                <a href="知识库/索引工具/" class="nav-item">
+                    <span class="nav-icon">🔍</span> 搜索知识库
+                </a>
+                <a href="知识库/词条/" class="nav-item">
+                    <span class="nav-icon">📚</span> 词条库
+                </a>
+                <a href="知识库/个人原创/古诗/" class="nav-item">
+                    <span class="nav-icon">📜</span> 原创古诗词
+                </a>
+                <a href="知识库/个人原创/文章/" class="nav-item">
+                    <span class="nav-icon">✒️</span> 原创散文
+                </a>
             </div>
         </div>
-
-        <footer>
-            <p>&copy; 2026 foryoufsg. 由AI辅助构建.</p>
-        </footer>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 滚动视差效果
-            let ticking = false;
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(() => {
-                        const scrolled = window.pageYOffset;
-                        document.body.style.backgroundPosition = `center ${scrolled * 0.3}px`;
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            });
-        });
-    </script>
 </body>
 </html>
