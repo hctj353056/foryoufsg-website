@@ -4,7 +4,7 @@
 
 ## 在线访问
 
-- GitHub Pages: https://hctj353056.github.io/my-static-website/
+- GitHub Pages: https://hctj353056.github.io/foryoufsg-website/
 - 域名: https://foryoufsg.com (待配置DNS)
 
 ## 项目作品
