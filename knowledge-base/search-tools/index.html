@@ -25,7 +25,28 @@
         .result-snippet mark { background: #fff3cd; color: #856404; padding: 0 2px; border-radius: 3px; }
         .no-results, .initial-hint { text-align: center; padding: 60px; color: #888; }
         .no-results .icon, .initial-hint .icon { font-size: 4em; margin-bottom: 20px; }
-        @media (max-width: 600px) { .search-box { flex-direction: column; } header { flex-direction: column; gap: 15px; } }
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 12px; padding: 15px 20px; text-align: center; }
+            header h1 { font-size: 1.4em; }
+            header a { padding: 6px 16px; font-size: 0.9em; }
+            .search-section { padding: 20px 15px; }
+            .search-box { flex-direction: column; }
+            .search-box input { padding: 12px 15px; font-size: 16px; }
+            .search-box button { padding: 12px 20px; font-size: 16px; }
+            .container { padding: 20px 15px; }
+            .result-item { padding: 15px; margin-bottom: 12px; }
+            .result-item h3 { font-size: 1.1em; }
+            .result-meta { flex-wrap: wrap; gap: 10px; }
+            .result-snippet { font-size: 0.9em; }
+            .no-results, .initial-hint { padding: 40px 15px; }
+            .no-results .icon, .initial-hint .icon { font-size: 3em; }
+        }
+        @media (max-width: 400px) {
+            header { padding: 12px 15px; }
+            .search-section { padding: 15px 10px; }
+            .container { padding: 15px 10px; }
+            .result-item { padding: 12px; }
+        }
     </style>
 </head>
 <body>

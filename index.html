@@ -80,10 +80,23 @@
             font-size: 1.5em;
             margin-right: 10px;
         }
-        @media (max-width: 600px) {
-            h1 { font-size: 3em; }
-            .nav { flex-direction: column; gap: 10px; }
-            .nav-item { width: 100%; padding: 12px 20px; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.4em; letter-spacing: 0.1em; }
+            .subtitle { font-size: 1.1em; letter-spacing: 0.15em; margin-bottom: 40px; padding: 0 15px; }
+            .hero { height: auto; min-height: 100vh; padding: 40px 15px; }
+            .nav-container { position: relative; bottom: auto; margin-top: 20px; width: 100%; padding: 0 10px; }
+            .nav { flex-direction: column; gap: 12px; }
+            .nav-item { width: 100%; padding: 16px 20px; font-size: 1em; text-align: center; }
+        }
+        @media (max-width: 400px) {
+            h1 { font-size: 2em; }
+            .subtitle { font-size: 0.95em; }
+            .nav-item { padding: 14px 16px; font-size: 0.95em; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            h1 { font-size: 3.5em; }
+            .subtitle { font-size: 1.4em; }
+            .nav-item { padding: 14px 24px; }
         }
     </style>
 </head>

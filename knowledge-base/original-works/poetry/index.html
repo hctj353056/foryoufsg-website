@@ -15,6 +15,23 @@
         .poem-meta { font-size: 0.9em; color: #9ca3af; margin-bottom: 15px; }
         .back-link { display: inline-block; margin-bottom: 30px; color: #ffd700; text-decoration: none; transition: color 0.3s; }
         .back-link:hover { color: #ffb700; }
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 20px 10px; }
+            h1 { font-size: 1.8em; margin-bottom: 25px; }
+            .poem-card { padding: 18px; margin-bottom: 18px; }
+            .poem-title { font-size: 1.4em; }
+            .poem-meta { font-size: 0.8em; }
+            .poem-card p { font-size: 0.9em; line-height: 1.8; }
+            .back-link { margin-bottom: 20px; font-size: 0.9em; }
+        }
+        @media (max-width: 400px) {
+            h1 { font-size: 1.5em; }
+            .container { padding: 15px 8px; }
+            .poem-card { padding: 14px; }
+            .poem-title { font-size: 1.2em; }
+            .poem-card p { font-size: 0.85em; }
+        }
     </style>
 </head>
 <body>
