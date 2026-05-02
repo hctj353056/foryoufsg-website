@@ -38,8 +38,8 @@ def parse_txt_to_json(txt_path, json_path):
     print(f"转换完成：{len(entries)} 条 → {json_path}")
 
 # 执行
-#base = "knowledge-base/original-works"
-base = '/storage/emulated/0/用户自建/GitHub/foryoufsg-website/knowledge-base/original-works/'
+base = "knowledge-base/original-works"
+#base = '/storage/emulated/0/用户自建/GitHub/foryoufsg-website/knowledge-base/original-works/'
 parse_txt_to_json(
     f"{base}/poetry/原创古诗词.txt",
     f"{base}/poetry/诗词.json"
