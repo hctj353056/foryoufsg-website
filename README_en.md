@@ -8,8 +8,8 @@ This project is the official website of FuShangGe, showcasing personal works and
 
 ## Online Access
 
-- GitHub Pages: https://hctj353056.github.io/foryoufsg-website/
-- Domain: https://fsg.foryoufsg.com
+- GitHub Pages: <https://hctj353056.github.io/foryoufsg-website/>
+- Domain: <https://fsg.foryoufsg.com>
 
 ## Project Structure
 
@@ -39,7 +39,7 @@ foryoufsg-website/
 
 A logic programming language based on formal grammar and logic, with core primitives of "indexing, computation, encoding"
 
-- GitHub: https://github.com/hctj353056/FSG-language
+- GitHub: <https://github.com/hctj353056/FSG-language>
 - Features: Pure Python implementation, no external dependencies, supports mobile environments
 - Status: Interpreter v1 released
 
@@ -47,7 +47,7 @@ A logic programming language based on formal grammar and logic, with core primit
 
 Innovative neural network model implemented in pure Python, optimized for Redmi K70
 
-- GitHub: https://github.com/hctj353056/ling
+- GitHub: <https://github.com/hctj353056/ling>
 - Features: 3D spatial distribution, neighborhood interference, dynamic threshold, structural evolution
 - Status: v1, v2, v3 (chat system) completed
 
@@ -72,12 +72,12 @@ The website is automatically deployed via GitHub Pages. Each push to the main br
 
 ## License
 
-MIT License
+no open
 
----
+***
 
 FuYou ♡
 
----
+***
 
 *FuShangGe · foryoufsg-website Project*

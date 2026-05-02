@@ -8,8 +8,8 @@
 
 ## 在线访问
 
-- GitHub Pages: https://hctj353056.github.io/foryoufsg-website/
-- 域名: https://fsg.foryoufsg.com
+- GitHub Pages: <https://hctj353056.github.io/foryoufsg-website/>
+- 域名: <https://fsg.foryoufsg.com>
 
 ## 项目结构
 
@@ -38,7 +38,7 @@ foryoufsg-website/
 
 基于形式文法和逻辑学的编程语言，核心为"索引、计算、编码"三原语
 
-- GitHub: https://github.com/hctj353056/FSG-language
+- GitHub: <https://github.com/hctj353056/FSG-language>
 - 特性: 纯Python实现、无外部依赖、支持手机环境运行
 - 状态: 解释器v1已发布
 
@@ -46,7 +46,7 @@ foryoufsg-website/
 
 纯Python实现的创新神经元网络模型，适合红米K70运行
 
-- GitHub: https://github.com/hctj353056/ling
+- GitHub: <https://github.com/hctj353056/ling>
 - 特性: 三维空间分布、邻域干涉、动态阈值、结构演化
 - 状态: 已完成v1、v2、v3（对话系统）
 
@@ -71,12 +71,12 @@ cd foryoufsg-website
 
 ## 许可证
 
-MIT License
+个人网站不开源
 
----
+***
 
 蜉蝣子 ♡
 
----
+***
 
 *蜉熵阁 · foryoufsg-website项目*
