@@ -21,9 +21,11 @@ function renderPage() {
   pageData.forEach(poem => {
     const card = document.createElement('div');
     card.className = 'poem-card';
+    const imageHtml = poem.image ? `<img src="${poem.image}" class="poem-image" alt="${poem.title}">` : '';
     card.innerHTML = `
       <div class="poem-title">${poem.title}</div>
       <div class="poem-meta">${poem.date}</div>
+      ${imageHtml}
       <p>${poem.content.replace(/\n/g, '<br>')}</p>
     `;
     container.appendChild(card);

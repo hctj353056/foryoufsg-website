@@ -12,9 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
       data.forEach(article => {
         const card = document.createElement('div');
         card.className = 'poem-card';
+        const imageHtml = article.image ? `<img src="${article.image}" class="poem-image" alt="${article.title}">` : '';
         card.innerHTML = `
           <div class="poem-title">${article.title}</div>
           <div class="poem-meta">${article.date}</div>
+          ${imageHtml}
           <p>${article.content.replace(/\n/g, '<br>')}</p>
         `;
         container.appendChild(card);
