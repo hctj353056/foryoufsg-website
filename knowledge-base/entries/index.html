@@ -42,7 +42,6 @@
         </div>
     </div>
 <script>
-<script>
 // ==========================================
 // 版权保护：复制劫持 + 开发者工具检测
 // ==========================================
@@ -50,20 +49,18 @@
 // 1. 复制劫持：不管复制多少，只给版权信息
 document.addEventListener('copy', function(e) {
   e.preventDefault();
-  
   const fakeText = '————————————\n' +
                    '作者：蜉蝣\n' +
                    '原文链接：' + window.location.href + '\n' +
                    '来源：foryoufsg.com\n' +
                    '————————————';
-  
   // 写入剪贴板
   if (e.clipboardData) {
-    e.clipboardData.setData('text/plain', fakeText);
-  } else if (window.clipboardData) {
-    window.clipboardData.setData('Text', fakeText);
-  }
-});
+    e.clipboardData.setData('text/plain', fakeText);} 
+  else if (window.clipboardData) {
+    window.clipboardData.setData('Text', fakeText);}
+}
+);
 
 // 2. 开发者工具检测：按F12或打开控制台就跳回首页
 (function() {
@@ -129,6 +126,7 @@ document.addEventListener('copy', function(e) {
     window.location.href = '/';
   }
 })();
+
 </script>
 </body>
 </html>
