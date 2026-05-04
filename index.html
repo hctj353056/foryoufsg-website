@@ -122,39 +122,26 @@
             </div>
         </div>
     </div>
-</body>
-</html>
-
 <script>
 // ==========================================
 // 版权保护：复制劫持 + 开发者工具检测
 // ==========================================
 
-// 1. 复制劫持：复制后自动加上版权信息
+// 1. 复制劫持：不管复制多少，只给版权信息
 document.addEventListener('copy', function(e) {
   e.preventDefault();
   
-  const selection = window.getSelection();
-  const selectedText = selection.toString();
+  const fakeText = '————————————\n' +
+                   '作者：蜉蝣\n' +
+                   '原文链接：' + window.location.href + '\n' +
+                   '来源：foryoufsg.com\n' +
+                   '————————————';
   
-  if (selectedText.length > 0) {
-    let copyText = selectedText;
-    
-    // 超过20字就加上版权信息
-    if (selectedText.length > 20) {
-      copyText = selectedText + 
-        '\n\n————————————\n' +
-        '作者：蜉蝣\n' +
-        '原文链接：' + window.location.href + '\n' +
-        '来源：foryoufsg.com';
-    }
-    
-    // 写入剪贴板
-    if (e.clipboardData) {
-      e.clipboardData.setData('text/plain', copyText);
-    } else if (window.clipboardData) {
-      window.clipboardData.setData('Text', copyText);
-    }
+  // 写入剪贴板
+  if (e.clipboardData) {
+    e.clipboardData.setData('text/plain', fakeText);
+  } else if (window.clipboardData) {
+    window.clipboardData.setData('Text', fakeText);
   }
 });
 
@@ -223,4 +210,8 @@ document.addEventListener('copy', function(e) {
   }
 })();
 </script>
+</body>
+</html>
+
+<script>
 

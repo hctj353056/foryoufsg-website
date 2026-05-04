@@ -47,10 +47,93 @@
     </div>
     <script src="articles-loader.js"></script>
 <script>
+<script>
 // ==========================================
 // 版权保护：复制劫持 + 开发者工具检测
 // ==========================================
-document.addEventListener("copy",function(e){e.preventDefault();const t=window.getSelection().toString();if(t.length>0){let n=t;t.length>20&&(n=t+"\n\n————————————\n作者：蜉蝣\n原文链接："+window.location.href+"\n来源：foryoufsg.com"),e.clipboardData?e.clipboardData.setData("text/plain",n):window.clipboardData&&window.clipboardData.setData("Text",n)}}),function(){document.addEventListener("keydown",function(e){if("F12"===e.key)return e.preventDefault(),void goHome();if((e.ctrlKey||e.metaKey)&&e.shiftKey&&"I"===e.key)return e.preventDefault(),void goHome();if((e.ctrlKey||e.metaKey)&&e.shiftKey&&"J"===e.key)return e.preventDefault(),void goHome();if((e.ctrlKey||e.metaKey)&&"u"===e.key)return e.preventDefault(),void goHome();if((e.ctrlKey||e.metaKey)&&"s"===e.key)return e.preventDefault(),void goHome()});let e=!1;const t=160;function n(){window.outerWidth-window.innerWidth>t||window.outerHeight-window.innerHeight>t?e||(e=!0,goHome()):e=!1}function goHome(){window.location.href="/"}setInterval(n,1e3)}();
+
+// 1. 复制劫持：不管复制多少，只给版权信息
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  
+  const fakeText = '————————————\n' +
+                   '作者：蜉蝣\n' +
+                   '原文链接：' + window.location.href + '\n' +
+                   '来源：foryoufsg.com\n' +
+                   '————————————';
+  
+  // 写入剪贴板
+  if (e.clipboardData) {
+    e.clipboardData.setData('text/plain', fakeText);
+  } else if (window.clipboardData) {
+    window.clipboardData.setData('Text', fakeText);
+  }
+});
+
+// 2. 开发者工具检测：按F12或打开控制台就跳回首页
+(function() {
+  // 检测快捷键
+  document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+    
+    // Ctrl+Shift+I / Cmd+Opt+I
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+    
+    // Ctrl+Shift+J / Cmd+Opt+J
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+    
+    // Ctrl+U 查看源代码
+    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+    
+    // Ctrl+S 保存
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+  });
+  
+  // 检测控制台是否打开（通过窗口尺寸变化）
+  let devToolsOpen = false;
+  const threshold = 160;
+  
+  function check() {
+    if (window.outerWidth - window.innerWidth > threshold ||
+        window.outerHeight - window.innerHeight > threshold) {
+      if (!devToolsOpen) {
+        devToolsOpen = true;
+        goHome();
+      }
+    } else {
+      devToolsOpen = false;
+    }
+  }
+  
+  // 每秒检测一次
+  setInterval(check, 1000);
+  
+  // 跳回首页
+  function goHome() {
+    window.location.href = '/';
+  }
+})();
 </script>
 </body>
 </html>
