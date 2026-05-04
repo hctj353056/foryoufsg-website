@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         card.innerHTML = `
           <div class="poem-title">${article.title}</div>
           <div class="poem-meta">${article.date}</div>
-          ${imageHtml}
           <p>${article.content.replace(/\n/g, '<br>')}</p>
+          ${imageHtml}
         `;
         container.appendChild(card);
       });

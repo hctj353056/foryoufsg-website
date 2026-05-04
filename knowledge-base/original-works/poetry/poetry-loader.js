@@ -25,8 +25,8 @@ function renderPage() {
     card.innerHTML = `
       <div class="poem-title">${poem.title}</div>
       <div class="poem-meta">${poem.date}</div>
-      ${imageHtml}
       <p>${poem.content.replace(/\n/g, '<br>')}</p>
+      ${imageHtml}
     `;
     container.appendChild(card);
   });
