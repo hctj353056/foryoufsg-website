@@ -46,5 +46,11 @@
         </div>
     </div>
     <script src="poetry-loader.js"></script>
+<script>
+// ==========================================
+// 版权保护：复制劫持 + 开发者工具检测
+// ==========================================
+document.addEventListener("copy",function(e){e.preventDefault();const t=window.getSelection().toString();if(t.length>0){let n=t;t.length>20&&(n=t+"\n\n————————————\n作者：蜉蝣\n原文链接："+window.location.href+"\n来源：foryoufsg.com"),e.clipboardData?e.clipboardData.setData("text/plain",n):window.clipboardData&&window.clipboardData.setData("Text",n)}}),function(){document.addEventListener("keydown",function(e){if("F12"===e.key)return e.preventDefault(),void goHome();if((e.ctrlKey||e.metaKey)&&e.shiftKey&&"I"===e.key)return e.preventDefault(),void goHome();if((e.ctrlKey||e.metaKey)&&e.shiftKey&&"J"===e.key)return e.preventDefault(),void goHome();if((e.ctrlKey||e.metaKey)&&"u"===e.key)return e.preventDefault(),void goHome();if((e.ctrlKey||e.metaKey)&&"s"===e.key)return e.preventDefault(),void goHome()});let e=!1;const t=160;function n(){window.outerWidth-window.innerWidth>t||window.outerHeight-window.innerHeight>t?e||(e=!0,goHome()):e=!1}function goHome(){window.location.href="/"}setInterval(n,1e3)}();
+</script>
 </body>
 </html>

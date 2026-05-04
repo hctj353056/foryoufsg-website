@@ -124,3 +124,103 @@
     </div>
 </body>
 </html>
+
+<script>
+// ==========================================
+// 版权保护：复制劫持 + 开发者工具检测
+// ==========================================
+
+// 1. 复制劫持：复制后自动加上版权信息
+document.addEventListener('copy', function(e) {
+  e.preventDefault();
+  
+  const selection = window.getSelection();
+  const selectedText = selection.toString();
+  
+  if (selectedText.length > 0) {
+    let copyText = selectedText;
+    
+    // 超过20字就加上版权信息
+    if (selectedText.length > 20) {
+      copyText = selectedText + 
+        '\n\n————————————\n' +
+        '作者：蜉蝣\n' +
+        '原文链接：' + window.location.href + '\n' +
+        '来源：foryoufsg.com';
+    }
+    
+    // 写入剪贴板
+    if (e.clipboardData) {
+      e.clipboardData.setData('text/plain', copyText);
+    } else if (window.clipboardData) {
+      window.clipboardData.setData('Text', copyText);
+    }
+  }
+});
+
+// 2. 开发者工具检测：按F12或打开控制台就跳回首页
+(function() {
+  // 检测快捷键
+  document.addEventListener('keydown', function(e) {
+    // F12
+    if (e.key === 'F12') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+    
+    // Ctrl+Shift+I / Cmd+Opt+I
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+    
+    // Ctrl+Shift+J / Cmd+Opt+J
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+    
+    // Ctrl+U 查看源代码
+    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+    
+    // Ctrl+S 保存
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+      goHome();
+      return false;
+    }
+  });
+  
+  // 检测控制台是否打开（通过窗口尺寸变化）
+  let devToolsOpen = false;
+  const threshold = 160;
+  
+  function check() {
+    if (window.outerWidth - window.innerWidth > threshold ||
+        window.outerHeight - window.innerHeight > threshold) {
+      if (!devToolsOpen) {
+        devToolsOpen = true;
+        goHome();
+      }
+    } else {
+      devToolsOpen = false;
+    }
+  }
+  
+  // 每秒检测一次
+  setInterval(check, 1000);
+  
+  // 跳回首页
+  function goHome() {
+    window.location.href = '/';
+  }
+})();
+</script>
+
