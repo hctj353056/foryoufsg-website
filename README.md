@@ -4,7 +4,7 @@
 
 ## 项目概述
 
-本项目是蜉熵阁的官方网站，展示个人作品和项目成果。
+本项目是蜉蝣阁的官方网站，展示个人作品和项目成果。
 
 ## 在线访问
 
@@ -79,4 +79,4 @@ cd foryoufsg-website
 
 ***
 
-*蜉熵阁 · foryoufsg-website项目*
+*蜉蝣阁 · foryoufsg-website项目*

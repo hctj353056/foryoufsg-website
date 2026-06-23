@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-This project is the official website of FuShangGe, showcasing personal works and project achievements.
+This project is the official website of FuYouGe, showcasing personal works and project achievements.
 
 ## Online Access
 
@@ -80,4 +80,4 @@ FuYou ♡
 
 ***
 
-*FuShangGe · foryoufsg-website Project*
+*FuYouGe · foryoufsg-website Project*
