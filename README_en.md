@@ -1,78 +1,52 @@
-# foryoufsg
+# FuYouGe · Personal Blog
 
-> FuYou's Digital Garden - Personal Portfolio Website
+> Fuyou's personal blog — poetry, essays, and social links
 
-## Project Overview
+## Online
 
-This project is the official website of FuYouGe, showcasing personal works and project achievements.
-
-## Online Access
-
-- GitHub Pages: <https://hctj353056.github.io/foryoufsg-website/>
 - Domain: <https://fsg.foryoufsg.com>
+- GitHub Pages: <https://hctj353056.github.io/foryoufsg-website/>
 
-## Project Structure
+## Structure
 
 ```
 foryoufsg-website/
-├── index.html              # Home Page
-├── CNAME                   # Custom Domain Configuration
-├── .github/
-│   └── workflows/
-│       └── deploy.yml      # Auto Deployment Workflow
-├── knowledge-base/         # Knowledge Base
-│   ├── entries/            # Entry Pages
-│   │   └── index.html
-│   ├── original-works/     # Original Works
-│   │   ├── articles/       # Prose Works
-│   │   └── poetry/         # Poetry Works
-│   └── search-tools/       # Search Tools
-│       └── index.html
-├── README.md               # Documentation (Chinese)
-├── README_en.md            # Documentation (English)
-└── LICENSE                 # License
+├── index.html              # Blog homepage (poems + essays merged by date)
+├── poetry/index.html       # Ancient poetry section
+├── essays/index.html       # Prose section
+├── social/index.html       # Social media links
+├── css/style.css           # Shared styles
+├── js/blog-loader.js       # Data loader & renderer
+└── knowledge-base/         # Data storage
+    └── original-works/
+        ├── poetry/         # Poem JSON + images
+        └── articles/       # Essay JSON + images
 ```
 
-## Featured Projects
+## Sections
 
-### ⚡ FSG-language
+| Section | Path | Description |
+|---------|------|-------------|
+| Blog | `/` | Merged feed of all works by date |
+| Poetry | `/poetry/` | Original ancient-style poems |
+| Essays | `/essays/` | Original prose |
+| Social | `/social/` | External links |
 
-A logic programming language based on formal grammar and logic, with core primitives of "indexing, computation, encoding"
+## How to add content
 
-- GitHub: <https://github.com/hctj353056/FSG-language>
-- Features: Pure Python implementation, no external dependencies, supports mobile environments
-- Status: Interpreter v1 released
+- **Poem**: edit `knowledge-base/original-works/poetry/诗词.json`
+- **Essay**: edit `knowledge-base/original-works/articles/散文.json`
+- **Link**: edit `social/index.html`
 
-### 🧠 Neural Network
+## Tech
 
-Innovative neural network model implemented in pure Python, optimized for Redmi K70
-
-- GitHub: <https://github.com/hctj353056/ling>
-- Features: 3D spatial distribution, neighborhood interference, dynamic threshold, structural evolution
-- Status: v1, v2, v3 (chat system) completed
-
-## Tech Stack
-
-- HTML5
-- CSS3 (Grid, Flexbox, Animations)
-- JavaScript (ES6+)
-- GitHub Pages Hosting
-
-## Local Development
-
-```bash
-git clone https://github.com/hctj353056/foryoufsg-website.git
-cd foryoufsg-website
-# Open index.html in browser
-```
-
-## Deployment
-
-The website is automatically deployed via GitHub Pages. Each push to the main branch triggers an automatic update.
+- HTML5 + CSS3
+- Vanilla JavaScript (fetch + template)
+- GitHub Pages
 
 ## License
 
-no open
+Personal site, not open-source.
 
 ***
 
@@ -80,4 +54,4 @@ FuYou ♡
 
 ***
 
-*FuYouGe · foryoufsg-website Project*
+*FuYouGe · foryoufsg-website*

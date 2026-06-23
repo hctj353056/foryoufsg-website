@@ -3,221 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>蜉蝣阁</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Noto Serif SC', 'Songti SC', serif;
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.5) 0%, rgba(22, 33, 62, 0.5) 100%), url('图片/聆灵.jpg');
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #e8e6e3;
-            padding: 0;
-            position: relative;
-            z-index: 0;
-        }
-        .hero {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.1) 0%, transparent 70%);
-        }
-        h1 {
-            font-size: 4.5em;
-            color: #ffd700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
-            margin-bottom: 20px;
-            letter-spacing: 0.2em;
-            position: relative;
-            z-index: 1;
-        }
-        .subtitle {
-            font-size: 1.8em;
-            color: #e8e6e3;
-            letter-spacing: 0.3em;
-            opacity: 0.9;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 1;
-        }
-        .nav-container {
-            position: absolute;
-            bottom: 60px;
-            z-index: 1;
-        }
-        .nav {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .nav-item {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,215,0,0.3);
-            padding: 15px 30px;
-            border-radius: 8px;
-            color: #e8e6e3;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.1em;
-        }
-        .nav-item:hover {
-            background: rgba(255,215,0,0.15);
-            border-color: #ffd700;
-            color: #ffd700;
-            transform: translateY(-3px);
-        }
-        .nav-icon {
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.4em; letter-spacing: 0.1em; }
-            .subtitle { font-size: 1.1em; letter-spacing: 0.15em; margin-bottom: 40px; padding: 0 15px; }
-            .hero { height: auto; min-height: 100vh; padding: 40px 15px; }
-            .nav-container { position: relative; bottom: auto; margin-top: 20px; width: 100%; padding: 0 10px; }
-            .nav { flex-direction: column; gap: 12px; }
-            .nav-item { width: 100%; padding: 16px 20px; font-size: 1em; text-align: center; }
-        }
-        @media (max-width: 400px) {
-            h1 { font-size: 2em; }
-            .subtitle { font-size: 0.95em; }
-            .nav-item { padding: 14px 16px; font-size: 0.95em; }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-            h1 { font-size: 3.5em; }
-            .subtitle { font-size: 1.4em; }
-            .nav-item { padding: 14px 24px; }
-        }
-    </style>
+    <title>蜉蝣阁 · 博客</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="hero">
+    <nav class="nav">
+        <a href="/" class="active">博客</a>
+        <a href="/poetry/">古诗</a>
+        <a href="/essays/">散文</a>
+        <a href="/social/">链接</a>
+    </nav>
+
+    <header class="header">
         <h1>蜉蝣阁</h1>
-        <p class="subtitle">原创 · poetry · 散文 · 检索</p>
-        
-        <div class="nav-container">
-            <div class="nav">
-                <a href="knowledge-base/search-tools/" class="nav-item">
-                    <span class="nav-icon">🔍</span> 搜索knowledge-base
-                </a>
-                <a href="knowledge-base/entries/" class="nav-item">
-                    <span class="nav-icon">📚</span> entries库
-                </a>
-                <a href="knowledge-base/original-works/poetry/" class="nav-item">
-                    <span class="nav-icon">📜</span> 原创poetry词
-                </a>
-                <a href="knowledge-base/original-works/articles/" class="nav-item">
-                    <span class="nav-icon">✒️</span> 原创散文
-                </a>
-            </div>
-        </div>
-    </div>
+        <p class="subtitle">朝生暮死 · 以思为翼 · 以数为庭</p>
+    </header>
+
+    <main class="container">
+        <div id="blog-feed"></div>
+    </main>
+
+    <footer class="footer">
+        <p>蜉蝣子 ♡ 蜉蝣阁</p>
+    </footer>
+
+    <script src="/js/blog-loader.js"></script>
+    <script>loadBlog('blog-feed');</script>
 <script>
 // ==========================================
 // 版权保护：复制劫持 + 开发者工具检测
 // ==========================================
-
-// 1. 复制劫持：不管复制多少，只给版权信息
-document.addEventListener('copy', function(e) {
-  e.preventDefault();
-  
-  const fakeText = '————————————\n' +
-                   '作者：蜉蝣\n' +
-                   '原文链接：' + window.location.href + '\n' +
-                   '来源：foryoufsg.com\n' +
-                   '————————————';
-  
-  // 写入剪贴板
-  if (e.clipboardData) {
-    e.clipboardData.setData('text/plain', fakeText);
-  } else if (window.clipboardData) {
-    window.clipboardData.setData('Text', fakeText);
-  }
-});
-
-// 2. 开发者工具检测：按F12或打开控制台就跳回首页
-(function() {
-  // 检测快捷键
-  document.addEventListener('keydown', function(e) {
-    // F12
-    if (e.key === 'F12') {
-      e.preventDefault();
-      goHome();
-      return false;
-    }
-    
-    // Ctrl+Shift+I / Cmd+Opt+I
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'I') {
-      e.preventDefault();
-      goHome();
-      return false;
-    }
-    
-    // Ctrl+Shift+J / Cmd+Opt+J
-    if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'J') {
-      e.preventDefault();
-      goHome();
-      return false;
-    }
-    
-    // Ctrl+U 查看源代码
-    if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
-      e.preventDefault();
-      goHome();
-      return false;
-    }
-    
-    // Ctrl+S 保存
-    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-      e.preventDefault();
-      goHome();
-      return false;
-    }
-  });
-  
-  // 检测控制台是否打开（通过窗口尺寸变化）
-  let devToolsOpen = false;
-  const threshold = 160;
-  
-  function check() {
-    if (window.outerWidth - window.innerWidth > threshold ||
-        window.outerHeight - window.innerHeight > threshold) {
-      if (!devToolsOpen) {
-        devToolsOpen = true;
-        goHome();
-      }
-    } else {
-      devToolsOpen = false;
-    }
-  }
-  
-  // 每秒检测一次
-  setInterval(check, 1000);
-  
-  // 跳回首页
-  function goHome() {
-    window.location.href = '/';
-  }
+(function(){
+document.addEventListener('copy',function(e){e.preventDefault();var t='————————————\n作者：蜉蝣\n原文链接：'+window.location.href+'\n来源：fsg.foryoufsg.com\n————————————';e.clipboardData?e.clipboardData.setData('text/plain',t):window.clipboardData&&window.clipboardData.setData('Text',t)});
+var goHome=function(){window.location.href='/'};
+document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='I'||e.key==='J')||(e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s')){e.preventDefault();goHome()}});
+var dto=!1;
+setInterval(function(){var t=window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160;t&&!dto&&(dto=!0,goHome());dto=t},1e3);
 })();
 </script>
 </body>
 </html>
-
-<script>
-

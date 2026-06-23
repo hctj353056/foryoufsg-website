@@ -1,0 +1,237 @@
+/* ==========================================
+   蜉蝣阁 · 博客风格样式
+   2026.06.23 / 作者：蜉蝣
+   ========================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #1a1a2e;
+  --bg2: #16213e;
+  --bg-card: rgba(255,255,255,0.03);
+  --gold: #ffd700;
+  --gold-dim: rgba(255,215,0,0.15);
+  --text: #e8e6e3;
+  --text-dim: #9ca3af;
+  --text-light: #d1d5db;
+  --border: rgba(255,215,0,0.2);
+  --radius: 12px;
+  --poem-color: #a29bfe;
+  --essay-color: #00d4aa;
+}
+
+body {
+  font-family: "Noto Serif SC", "Songti SC", Georgia, serif;
+  background: linear-gradient(135deg, var(--bg) 0%, var(--bg2) 100%);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* ── 导航栏 ── */
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 24px 20px 0;
+  flex-wrap: wrap;
+}
+.nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.95em;
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+.nav a:hover,
+.nav a.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ── 主容器 ── */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ── 页头 ── */
+.header {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+.header h1 {
+  font-size: 2.8em;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+.header .subtitle {
+  font-size: 1.05em;
+  color: var(--text-dim);
+  margin-top: 10px;
+  letter-spacing: 0.2em;
+}
+
+/* ── 文章卡片 ── */
+.card {
+  background: var(--bg-card);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  transition: all 0.3s;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.card:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateX(3px);
+}
+.card-img {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: rgba(255,255,255,0.05);
+}
+.card-body {
+  flex: 1;
+  min-width: 0;
+}
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.card-badge {
+  font-size: 0.75em;
+  padding: 2px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.05em;
+}
+.card-badge.poem {
+  background: rgba(162,155,254,0.15);
+  color: var(--poem-color);
+}
+.card-badge.essay {
+  background: rgba(0,212,170,0.15);
+  color: var(--essay-color);
+}
+.card-date {
+  font-size: 0.8em;
+  color: var(--text-dim);
+}
+.card-title {
+  font-size: 1.3em;
+  color: var(--gold);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.card-snippet {
+  font-size: 0.9em;
+  color: var(--text-light);
+  line-height: 1.75;
+  white-space: pre-line;
+}
+.card-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.85em;
+  color: var(--gold);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.card-link:hover { opacity: 1; }
+
+/* ── 单页内容（古诗/散文列表） ── */
+.section-page .card {
+  flex-direction: column;
+}
+.section-page .card-img {
+  width: 100%;
+  max-height: 240px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  margin: -24px -28px 16px;
+  width: calc(100% + 56px);
+  object-fit: cover;
+}
+
+/* ── 社交链接页 ── */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.social-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.3s;
+}
+.social-card:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+.social-icon {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+.social-name {
+  font-size: 1em;
+  font-weight: 600;
+}
+.social-desc {
+  font-size: 0.8em;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* ── 空状态 ── */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-dim);
+}
+.empty .icon { font-size: 3em; margin-bottom: 16px; }
+
+/* ── 页脚 ── */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dim);
+  font-size: 0.85em;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+  .header h1 { font-size: 2em; }
+  .header { padding: 40px 20px 30px; }
+  .nav { gap: 20px; padding: 16px 12px 0; }
+  .nav a { font-size: 0.88em; }
+  .container { padding: 24px 12px 40px; }
+  .card { padding: 16px 18px; flex-direction: column; }
+  .card-img { width: 100%; height: 160px; }
+  .card-title { font-size: 1.15em; }
+  .social-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 400px) {
+  .header h1 { font-size: 1.6em; }
+  .nav { gap: 12px; }
+  .nav a { font-size: 0.82em; }
+  .card { padding: 14px; }
+  .social-grid { grid-template-columns: 1fr; }
+}

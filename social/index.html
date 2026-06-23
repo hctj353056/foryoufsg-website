@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交媒体 · 蜉蝣阁</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+      .social-links { max-width: 700px; margin: 0 auto; }
+      .social-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; text-decoration: none; color: var(--text); transition: all 0.3s; }
+      .social-item:hover { background: var(--gold-dim); border-color: var(--gold); transform: translateX(4px); }
+      .social-item .icon { font-size: 1.8em; flex-shrink: 0; width: 48px; text-align: center; }
+      .social-item .info { flex: 1; min-width: 0; }
+      .social-item .name { font-size: 1.05em; font-weight: 600; }
+      .social-item .desc { font-size: 0.8em; color: var(--text-dim); margin-top: 2px; }
+      .social-item .arrow { color: var(--text-dim); font-size: 1.2em; }
+      @media (max-width: 600px) { .social-item { padding: 16px; } }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/">博客</a>
+        <a href="/poetry/">古诗</a>
+        <a href="/essays/">散文</a>
+        <a href="/social/" class="active">链接</a>
+    </nav>
+
+    <header class="header">
+        <h1>🔗 社交媒体</h1>
+        <p class="subtitle">找到蜉蝣的其他角落</p>
+    </header>
+
+    <main class="container">
+        <div class="social-links" id="social-links">
+            <a class="social-item" href="https://github.com/hctj353056" target="_blank" rel="noopener">
+                <span class="icon">💻</span>
+                <div class="info">
+                    <div class="name">GitHub</div>
+                    <div class="desc">代码与开源项目</div>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+
+            <a class="social-item" href="https://foryoufsg.com" target="_blank" rel="noopener">
+                <span class="icon">🏛️</span>
+                <div class="info">
+                    <div class="name">蜉熵阁 · 智者之庭</div>
+                    <div class="desc">项目展示与庭院留言板</div>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+
+            <a class="social-item" href="https://space.bilibili.com/" target="_blank" rel="noopener">
+                <span class="icon">📺</span>
+                <div class="info">
+                    <div class="name">B站</div>
+                    <div class="desc">视频与内容创作（待更新链接）</div>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+
+            <a class="social-item" href="https://qm.qq.com/q/jRAZD2ebni" target="_blank" rel="noopener">
+                <span class="icon">💬</span>
+                <div class="info">
+                    <div class="name">QQ 交流群</div>
+                    <div class="desc">加入讨论，互相学习</div>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+
+            <a class="social-item" href="https://www.xiaohongshu.com/" target="_blank" rel="noopener">
+                <span class="icon">📕</span>
+                <div class="info">
+                    <div class="name">小红书</div>
+                    <div class="desc">（待更新链接）</div>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+
+            <a class="social-item" href="https://weibo.com/" target="_blank" rel="noopener">
+                <span class="icon">🐦</span>
+                <div class="info">
+                    <div class="name">微博</div>
+                    <div class="desc">（待更新链接）</div>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+
+            <a class="social-item" href="https://www.douyin.com/" target="_blank" rel="noopener">
+                <span class="icon">🎵</span>
+                <div class="info">
+                    <div class="name">抖音</div>
+                    <div class="desc">（待更新链接）</div>
+                </div>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>蜉蝣子 ♡ 蜉蝣阁</p>
+    </footer>
+
+<script>
+(function(){
+document.addEventListener('copy',function(e){e.preventDefault();var t='————————————\n作者：蜉蝣\n原文链接：'+window.location.href+'\n来源：fsg.foryoufsg.com\n————————————';e.clipboardData?e.clipboardData.setData('text/plain',t):window.clipboardData&&window.clipboardData.setData('Text',t)});
+var goHome=function(){window.location.href='/'};
+document.addEventListener('keydown',function(e){if(e.key==='F12'||(e.ctrlKey||e.metaKey)&&e.shiftKey&&(e.key==='I'||e.key==='J')||(e.ctrlKey||e.metaKey)&&(e.key==='u'||e.key==='s')){e.preventDefault();goHome()}});
+var dto=!1;
+setInterval(function(){var t=window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160;t&&!dto&&(dto=!0,goHome());dto=t},1e3);
+})();
+</script>
+</body>
+</html>
