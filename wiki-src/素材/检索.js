@@ -8,7 +8,7 @@
 
   var 库 = window.词库 || [];
   var 首页 = !!window.是首页;
-  var 词库前缀 = window.词库前缀 || "";
+  var 前缀 = window.前缀 || "";
 
   var 输入框 = document.getElementById("搜");
   var 面板 = document.getElementById("搜面板");
@@ -180,7 +180,7 @@
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
       if (输入框) { 输入框.focus(); 输入框.select(); }
-      else location.href = 词库前缀 + "index.html";
+      else location.href = 前缀 + "index.html";
     }
   });
 
@@ -189,7 +189,7 @@
     if (输入框) {
       输入框.addEventListener("focus", function () {
         输入框.blur();
-        location.href = 词库前缀 + "index.html";
+        location.href = 前缀 + "index.html";
       });
     }
   } else {

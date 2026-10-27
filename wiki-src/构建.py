@@ -3,14 +3,14 @@
 """
 蜉蝣阁 · 词库生成器
 ==================
-wiki-src/内容/**/*.md  ──本脚本──▶  wiki/**/*.html
+wiki-src/内容/**/*.md  ──本脚本──▶  _site/**/*.html
 
 约定
 ----
 1. 内容/ 下任意层级放 .md，文件夹名即分组
 2. 文件开头可写 front matter：标题 / 别名 / 标签 / 摘要
 3. 正文用 [[词条名]] 互链；指向尚不存在的词条会自动渲染为红链
-4. 每次构建会清空并重建 wiki/ —— 只改 wiki-src/，别手改产物
+4. 产物写入 _site/，每次构建清空重建 —— 只改 wiki-src/，别手改产物
 
 零第三方依赖，Python 3.8+
 """
@@ -21,12 +21,15 @@ import os
 import re
 import shutil
 import sys
+from datetime import datetime
 from pathlib import Path
 
 # ═══════════════ 配置 ═══════════════
+版本 = "0.0.3"
 站点名 = "蜉蝣阁"
 分类名 = "词库"
-站点说明 = "按文件夹分类、靠双链互引、可全文检索的静态知识库。每一条都是独立的 Markdown 文件，改动即刻可查。"
+主站 = "https://foryoufsg.com"
+站点说明 = "按分组归类、靠双链互引的静态知识库。每一条都是独立的 Markdown 文件，推送到仓库即生效。"
 
 索引上限 = 160        # 索引里每篇正文最多存多少字，控制首页体积
 最多结果 = 40         # 搜索结果最多显示几条
@@ -35,7 +38,7 @@ from pathlib import Path
 内容目录 = 源码目录 / "内容"
 素材目录 = 源码目录 / "素材"
 仓库根 = 源码目录.parent
-输出目录 = 仓库根 / "wiki"
+输出目录 = 仓库根 / "_site"
 
 
 # ═══════════════ 读取 ═══════════════
@@ -107,6 +110,13 @@ def 读全部词条():
 
 
 # ═══════════════ Markdown ═══════════════
+def 扫双链(源):
+    """提取正文里的双链目标，跳过代码块与行内代码（示例语法不算待建）"""
+    s = re.sub(r"```.*?```", " ", 源, flags=re.S)
+    s = re.sub(r"`[^`]*`", " ", s)
+    return [m.strip() for m in re.findall(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", s)]
+
+
 def 建名表(词条们):
     表 = {}
     for 条 in 词条们:
@@ -261,6 +271,7 @@ def 渲染(源文, 当前条, 名表):
 # ═══════════════ 骨架 ═══════════════
 词条们全局 = []
 当前编号全局 = None
+构建日期 = datetime.now().strftime("%Y-%m-%d")
 
 
 def 侧栏(前缀, 当前编号=None):
@@ -268,7 +279,7 @@ def 侧栏(前缀, 当前编号=None):
     for 条 in 词条们全局:
         分组表.setdefault(条["分组"], []).append(条)
 
-    片段 = ['<div class="侧栏题">%s·%s</div>' % (站点名, 分类名)]
+    片段 = ['<div class="侧栏题">%s</div>' % 分类名]
     for 组 in sorted(分组表):
         片段.append('<div class="分类块">')
         片段.append('<div class="分类标题">%s<em>%d</em></div>' % (
@@ -281,33 +292,31 @@ def 侧栏(前缀, 当前编号=None):
     return "\n".join(片段)
 
 
-def 顶栏(站根前缀):
+def 顶栏(前缀):
     return (
         '<div class="顶栏">'
         '<a class="站名" href="%sindex.html">%s<span>·%s</span></a>'
+        '<em class="版本" title="词库版本">v%s</em>'
         '<div class="搜索盒"><input id="搜" placeholder="搜索词条" autocomplete="off" spellcheck="false">'
         '<span class="键位">Ctrl K</span></div>'
         '<nav class="顶导航">'
-        '<a href="%sindex.html">博客</a>'
-        '<a href="%spoetry/">古诗</a>'
-        '<a href="%sessays/">散文</a>'
-        '<a href="%ssocial/">链接</a>'
+        '<a href="%s" target="_blank" rel="noopener">主站 ↗</a>'
         '</nav>'
-        '</div>' % (站根前缀, html.escape(站点名), html.escape(分类名),
-                    站根前缀, 站根前缀, 站根前缀, 站根前缀)
+        '</div>' % (前缀, html.escape(站点名), html.escape(分类名), 版本, 主站)
     )
 
 
 def 页面(标题, 主体, 深, 额外脚本="", 是首页=False):
     css = (素材目录 / "样式.css").read_text(encoding="utf-8")
     js = (素材目录 / "检索.js").read_text(encoding="utf-8")
-    站根前缀 = "../" * (深 + 1)
-    词库前缀 = "../" * 深
+    前缀 = "../" * 深
     return """<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="version" content="%s">
+<meta name="generator" content="wiki-src/构建.py">
 <title>%s</title>
 <style>
 %s
@@ -321,18 +330,19 @@ def 页面(标题, 主体, 深, 额外脚本="", 是首页=False):
 %s
 </main>
 </div>
-<script>window.站根前缀=%s;window.词库前缀=%s;window.是首页=%s;%s</script>
+<script>window.前缀=%s;window.是首页=%s;%s</script>
 <script>
 %s
 </script>
 </body>
 </html>""" % (
+        版本,
         标题 + " · " + 站点名 + 分类名,
         css,
-        顶栏(站根前缀),
-        侧栏(词库前缀, 当前编号全局),
+        顶栏(前缀),
+        侧栏(前缀, 当前编号全局),
         主体,
-        json.dumps(站根前缀), json.dumps(词库前缀),
+        json.dumps(前缀),
         "true" if 是首页 else "false",
         额外脚本,
         js,
@@ -356,8 +366,8 @@ def 构建():
 
     反链 = {条["编号"]: [] for 条 in 词条们}
     for 条 in 词条们:
-        for 名 in re.findall(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", 条["源"]):
-            目标 = 名表.get(名.strip().lower())
+        for 名 in 扫双链(条["源"]):
+            目标 = 名表.get(名.lower())
             if 目标 and 目标["编号"] != 条["编号"]:
                 if 条["标题"] not in 反链[目标["编号"]]:
                     反链[目标["编号"]].append(条["标题"])
@@ -366,12 +376,16 @@ def 构建():
         shutil.rmtree(输出目录)
     输出目录.mkdir(parents=True)
 
+    # CNAME 必须随产物一起发布，否则自定义域名失效
+    cname = 仓库根 / "CNAME"
+    if cname.exists():
+        shutil.copy2(cname, 输出目录 / "CNAME")
+
     # ── 词条页 ──
     for 条 in 词条们:
         当前编号全局 = 条["编号"]
         深 = len(Path(条["路径"]).parts) - 1
-        前缀 = "../" * 深         # 回到词库根
-        站根 = "../" * (深 + 1)   # 回到仓库根
+        前缀 = "../" * 深
 
         正文 = 渲染(条["源"], 条, 名表)
         面包 = '<a href="%sindex.html">%s</a> / <a href="%sindex.html#%s">%s</a>' % (
@@ -399,12 +413,16 @@ def 构建():
 %s
 %s
 </article>
-<div class="页脚"><a href="%sindex.html">← 返回%s</a></div>
+<div class="页脚">
+<a href="%sindex.html">← 返回%s</a>
+<span class="页脚版">v%s · 构建于 %s</span>
+</div>
 </div>
 <div class="搜面板" id="搜面板">
 <div class="搜提示" id="搜提示"></div>
 <div id="结果列表"></div>
-</div>""" % (html.escape(条["标题"]), 面包, 正文, 标签, 反链块, 前缀, 分类名)
+</div>""" % (html.escape(条["标题"]), 面包, 正文, 标签, 反链块,
+            前缀, 分类名, 版本, 构建日期)
 
         目标 = 输出目录 / 条["路径"]
         目标.parent.mkdir(parents=True, exist_ok=True)
@@ -429,12 +447,13 @@ def 构建():
                     html.escape(条["摘要"] or "（还没写摘要）")))
 
     已建 = set(x["标题"] for x in 词条们)
-    全链 = set(re.findall(r"\[\[([^\]|]+)", "".join(x["源"] for x in 词条们)))
+    全链 = set(n for x in 词条们 for n in 扫双链(x["源"]))
     红链数 = len(全链 - 已建)
 
     主体 = """<div id="正文区">
 <div class="首页头">
 <h1>%s<span>·%s</span></h1>
+<div class="首页版">v%s <i>%s</i></div>
 <p>%s</p>
 </div>
 <div class="统计行">
@@ -443,12 +462,17 @@ def 构建():
 <div class="统计"><b>%d</b><span>待建</span></div>
 </div>
 %s
+<div class="页脚">
+<a href="%s" target="_blank" rel="noopener">主站 ↗</a>
+<span class="页脚版">v%s · 构建于 %s</span>
+</div>
 </div>
 <div class="搜面板" id="搜面板">
 <div class="搜提示" id="搜提示"></div>
 <div id="结果列表"></div>
-</div>""" % (站点名, 分类名, html.escape(站点说明),
-             len(词条们), len(分组表), 红链数, "\n".join(卡片))
+</div>""" % (站点名, 分类名, 版本, 构建日期, html.escape(站点说明),
+             len(词条们), len(分组表), 红链数,
+            "\n".join(卡片), 主站, 版本, 构建日期)
 
     索引 = [{
         "标题": 条["标题"], "别名": 条["别名"], "标签": 条["标签"],
@@ -461,7 +485,8 @@ def 构建():
     (输出目录 / "index.html").write_text(
         页面("首页", 主体, 0, 额外, 是首页=True), encoding="utf-8")
 
-    print("词库构建完成：%d 条词条 / %d 个分组 / %d 处待建" % (len(词条们), len(分组表), 红链数))
+    print("词库 v%s 构建完成：%d 条词条 / %d 个分组 / %d 处待建" % (
+        版本, len(词条们), len(分组表), 红链数))
     print("输出：", 输出目录)
     return 0
 

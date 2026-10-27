@@ -182,6 +182,9 @@ article pre {
   overflow-x: auto; margin: 0 0 18px;
   font-size: 0.84em; line-height: 1.65;
 }
+article td code, article th code {
+  background: transparent; border: none; padding: 0; font-size: 0.94em;
+}
 article pre code {
   background: none; border: none; color: #d8d4cc; padding: 0;
   font-size: 1em;
@@ -247,9 +250,41 @@ article tr:last-child td { border-bottom: none; }
 }
 .反链区 li a:hover { border-color: var(--金); color: var(--金); text-decoration: none; }
 
-.页脚 { margin-top: 50px; font-size: 0.82em; }
+.页脚 {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 12px; flex-wrap: wrap;
+  margin-top: 50px; font-size: 0.82em;
+}
 .页脚 a { color: var(--次); }
 .页脚 a:hover { color: var(--金); }
+.页脚版 {
+  font-size: 0.92em; color: var(--次); opacity: 0.55;
+  font-family: var(--等宽); letter-spacing: 0.02em;
+}
+
+/* ── 版本标识 ── */
+.版本 {
+  font-style: normal;
+  font-size: 0.66em;
+  letter-spacing: 0.03em;
+  color: var(--次);
+  border: 1px solid var(--线);
+  border-radius: 20px;
+  padding: 1.5px 8px;
+  margin-left: 10px;
+  font-family: var(--等宽);
+  white-space: nowrap;
+  opacity: 0.85;
+}
+.首页版 {
+  font-size: 0.74em;
+  color: var(--次);
+  letter-spacing: 0.08em;
+  margin: 6px 0 12px;
+  font-family: var(--等宽);
+  opacity: 0.7;
+}
+.首页版 i { font-style: normal; opacity: 0.6; margin-left: 10px; }
 
 /* ── 搜索面板 ── */
 .搜面板 { display: none; }
@@ -322,7 +357,7 @@ article tr:last-child td { border-bottom: none; }
 
 .词条卡 {
   display: block; background: var(--卡);
-  border: 1px solid var(--线灰); border-left: 3px solid rgba(255, 215, 0, 0.4);
+  border: 1px solid var(--线灰); border-left: 3px solid rgba(255, 215, 0, 0.55);
   border-radius: 0 var(--圆) var(--圆) 0;
   padding: 14px 20px; margin-bottom: 10px; transition: 0.18s;
 }

@@ -1,5 +1,5 @@
 # 词库构建产物（由 wiki-src/构建.py 生成，不入库）
-/wiki/
+/_site/
 
 __pycache__/
 *.pyc
